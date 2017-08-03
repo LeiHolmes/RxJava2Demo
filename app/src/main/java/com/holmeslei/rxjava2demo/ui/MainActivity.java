@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bt_create:
                 startActivity(new Intent(this, CreateActivity.class));
                 break;
-            case R.id.back_pressure:
+            case R.id.bt_back_pressure:
                 startActivity(new Intent(this, BackPressureActivity.class));
                 break;
         }
