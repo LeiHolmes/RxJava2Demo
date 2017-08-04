@@ -11,7 +11,6 @@ import org.reactivestreams.Subscription;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Maybe;
 import io.reactivex.MaybeObserver;
@@ -27,12 +26,12 @@ import io.reactivex.schedulers.Schedulers;
  * author         xulei
  * Date           2017/8/3 14:07
  */
-public class CreateActivity extends AppCompatActivity {
+public class ObserveModeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.activity_observe_mode);
         range();
         create();
         maybeObserver();
@@ -67,6 +66,7 @@ public class CreateActivity extends AppCompatActivity {
         public void onSubscribe(Subscription s) {
             Log.e("rx2_test", "onSubscribe");
             subscription = s;
+            //这里可进行一些初始化操作
             subscription.request(1);
         }
 
@@ -89,9 +89,9 @@ public class CreateActivity extends AppCompatActivity {
 
     /**
      * 还有一类观察者模式
-     * 1. Single/SingleObserver
-     * 2. Completable/CompletableObserver
-     * 3. Maybe/MaybeObserver
+     * 1. Single/SingleObserver：订阅后只能接收到一次
+     * 2. Completable/CompletableObserver：只能接收到完成(onComplete)和错误(onError)
+     * 3. Maybe/MaybeObserver：只能接收到一次true或false的数据
      * 不用于发送大量数据，主要用于判断单一状态
      */
     private void maybeObserver() {

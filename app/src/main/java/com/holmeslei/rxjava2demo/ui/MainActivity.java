@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.holmeslei.rxjava2demo.R;
-import com.holmeslei.rxjava2demo.ui.BackPressureActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.bt_create, R.id.bt_back_pressure})
+    @OnClick({R.id.bt_observe_mode_change, R.id.bt_other_change})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.bt_create:
-                startActivity(new Intent(this, CreateActivity.class));
+            case R.id.bt_observe_mode_change:
+                startActivity(new Intent(this, ObserveModeActivity.class));
                 break;
-            case R.id.bt_back_pressure:
-                startActivity(new Intent(this, BackPressureActivity.class));
+            case R.id.bt_other_change:
+                startActivity(new Intent(this, OtherChangeActivity.class));
                 break;
         }
     }

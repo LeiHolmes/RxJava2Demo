@@ -24,17 +24,17 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/bt_create"
+            android:id="@+id/bt_observe_mode_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="创建操作符更新" />
+            android:text="观察者模式更新" />
 
         <Button
-            android:id="@+id/bt_back_pressure"
+            android:id="@+id/bt_other_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="背压问题BackPressure" />
+            android:text="其他更新" />
     </LinearLayout>
 </RelativeLayout>

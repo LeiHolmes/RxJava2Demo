@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.BackPressureActivity" />
-        <activity android:name=".ui.CreateActivity"></activity>
+        <activity android:name=".ui.ObserveModeActivity" />
+        <activity android:name=".ui.OtherChangeActivity"></activity>
     </application>
 
 </manifest>
