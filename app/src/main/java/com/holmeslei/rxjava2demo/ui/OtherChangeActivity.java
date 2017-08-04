@@ -32,6 +32,9 @@ public class OtherChangeActivity extends AppCompatActivity {
      */
     private void subscriptionChange() {
         //Subscription改名为Disposable
+        //CompositeSubscription改名为CompositeDisposable
+        //SerialSubscription和MultipleAssignmentSubscription被合并到了SerialDisposable里.set()方法会处理掉就的值，而replace()方法不会。
+        //RefCountSubscription被移除了
     }
 
     /**
