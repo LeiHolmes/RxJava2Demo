@@ -8,7 +8,9 @@ import com.holmeslei.rxjava2demo.R;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
@@ -21,6 +23,23 @@ public class OtherChangeActivity extends AppCompatActivity {
         actionChange();
         functionChange();
         doOnCancel();
+        schedulerChange();
+        subscriptionChange();
+    }
+
+    /**
+     * Subscription更新
+     */
+    private void subscriptionChange() {
+        //Subscription改名为Disposable
+    }
+
+    /**
+     * 线程调度更新
+     */
+    private void schedulerChange() {
+        //去除Schedulers.immediate()与Schedulers.test()
+        //io.reactivex.Scheduler这个抽象类支持直接调度自定义线程任务
     }
 
     /**
@@ -63,5 +82,23 @@ public class OtherChangeActivity extends AppCompatActivity {
                         Log.e("rx2_test", "functionChange：" + s);
                     }
                 });
+    }
+
+    /**
+     * doOnCancel/doOnDispose/unsubscribeOn
+     * 取消订阅时回调
+     */
+    private void doOnCancel() {
+        //take操作符会取消之后未发送的时间，因此会出发doOnCancel()。
+        Flowable.just(1, 2, 3, 4, 5)
+                .doOnCancel(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Log.e("rx2_test", "回调doOnCancel");
+                    }
+                })
+                .take(2)
+                .subscribe((integer) -> Log.e("rx2_test", "doOnCancel：" + integer));
+        //注意take与doOnCancel先后顺序，先take后doOnCancel取消时则不会回到doOnCancel()
     }
 }
