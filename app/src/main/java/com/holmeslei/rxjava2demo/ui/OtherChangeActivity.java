@@ -27,23 +27,6 @@ public class OtherChangeActivity extends AppCompatActivity {
         subscriptionChange();
     }
 
-    /**
-     * Subscription更新
-     */
-    private void subscriptionChange() {
-        //Subscription改名为Disposable
-        //CompositeSubscription改名为CompositeDisposable
-        //SerialSubscription和MultipleAssignmentSubscription被合并到了SerialDisposable里.set()方法会处理掉就的值，而replace()方法不会。
-        //RefCountSubscription被移除了
-    }
-
-    /**
-     * 线程调度更新
-     */
-    private void schedulerChange() {
-        //去除Schedulers.immediate()与Schedulers.test()
-        //io.reactivex.Scheduler这个抽象类支持直接调度自定义线程任务
-    }
 
     /**
      * Action更新
@@ -103,5 +86,23 @@ public class OtherChangeActivity extends AppCompatActivity {
                 .take(2)
                 .subscribe((integer) -> Log.e("rx2_test", "doOnCancel：" + integer));
         //注意take与doOnCancel先后顺序，先take后doOnCancel取消时则不会回到doOnCancel()
+    }
+
+    /**
+     * 线程调度更新
+     */
+    private void schedulerChange() {
+        //去除Schedulers.immediate()与Schedulers.test()
+        //io.reactivex.Scheduler这个抽象类支持直接调度自定义线程任务
+    }
+
+    /**
+     * Subscription更新
+     */
+    private void subscriptionChange() {
+        //Subscription改名为Disposable
+        //CompositeSubscription改名为CompositeDisposable
+        //SerialSubscription和MultipleAssignmentSubscription被合并到了SerialDisposable里.set()方法会处理掉就的值，而replace()方法不会。
+        //RefCountSubscription被移除了
     }
 }
