@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.bt_observe_mode_change, R.id.bt_other_change})
+    @OnClick({R.id.bt_observe_mode_change, R.id.bt_other_change, R.id.bt_count_down})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_observe_mode_change:
@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bt_other_change:
                 startActivity(new Intent(this, OtherChangeActivity.class));
+                break;
+            case R.id.bt_count_down:
+                startActivity(new Intent(this, CountDownActivity.class));
                 break;
         }
     }

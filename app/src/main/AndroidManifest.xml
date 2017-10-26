@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ObserveModeActivity" />
-        <activity android:name=".ui.OtherChangeActivity"></activity>
+        <activity android:name=".ui.OtherChangeActivity" />
+        <activity android:name=".ui.CountDownActivity"></activity>
     </application>
 
 </manifest>

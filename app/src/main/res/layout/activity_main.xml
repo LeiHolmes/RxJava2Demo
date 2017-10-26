@@ -36,5 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="其他更新" />
+
+        <Button
+            android:id="@+id/bt_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="倒计时" />
     </LinearLayout>
 </RelativeLayout>
