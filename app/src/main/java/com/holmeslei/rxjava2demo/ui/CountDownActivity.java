@@ -37,8 +37,8 @@ public class CountDownActivity extends AppCompatActivity {
         //点击后置为不可点击状态
         btnGetCode.setEnabled(false);
         btnGetCode.setClickable(false);
-        //从1-10依次输出数字，延时0s执行，每1s发射一次。
-        mdDisposable = Flowable.intervalRange(1, 10, 0, 1, TimeUnit.SECONDS)
+        //从0开始发射11个数字为：0-10依次输出，延时0s执行，每1s发射一次。
+        mdDisposable = Flowable.intervalRange(0, 11, 0, 1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<Long>() {
                     @Override
