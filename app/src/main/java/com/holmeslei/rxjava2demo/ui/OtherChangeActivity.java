@@ -47,7 +47,7 @@ public class OtherChangeActivity extends AppCompatActivity {
     }
 
     /**
-     * Function更新
+     * Func更新
      * Func1->Function
      * Func2->BiFunction
      * Func3-Func9->Function3-Function9
@@ -65,7 +65,7 @@ public class OtherChangeActivity extends AppCompatActivity {
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        Log.e("rx2_test", "functionChange：" + s);
+                        Log.e("rx2_test", "funcChange：" + s);
                     }
                 });
     }
@@ -75,8 +75,8 @@ public class OtherChangeActivity extends AppCompatActivity {
      * 取消订阅时回调
      */
     private void doOnCancel() {
-        //take操作符会取消之后未发送的时间，因此会出发doOnCancel()。
-        Flowable.just(1, 2, 3, 4, 5)
+        //take操作符会取消之后未发送的事件，因此会出发doOnCancel()。
+        Flowable.range(1, 4)
                 .doOnCancel(new Action() {
                     @Override
                     public void run() throws Exception {
@@ -84,7 +84,12 @@ public class OtherChangeActivity extends AppCompatActivity {
                     }
                 })
                 .take(2)
-                .subscribe((integer) -> Log.e("rx2_test", "doOnCancel：" + integer));
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.e("rx2_test", "doOnCancel：" + integer);
+                    }
+                });
         //注意take与doOnCancel先后顺序，先take后doOnCancel取消时则不会回到doOnCancel()
     }
 

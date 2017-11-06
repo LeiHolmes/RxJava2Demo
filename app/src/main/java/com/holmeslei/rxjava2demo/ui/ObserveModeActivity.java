@@ -46,12 +46,13 @@ public class ObserveModeActivity extends AppCompatActivity {
      */
     private void create() {
         Flowable.create((FlowableOnSubscribe<Integer>) e -> {
-            e.onNext(1);
-            e.onNext(2);
-            e.onNext(3);
-            e.onNext(4);
-            e.onComplete();
-        }, BackpressureStrategy.BUFFER)
+                    e.onNext(1);
+                    e.onNext(2);
+                    e.onNext(3);
+                    e.onNext(4);
+                    e.onComplete();
+                },
+                BackpressureStrategy.BUFFER)
                 .subscribe(new MySubscription());
     }
 
