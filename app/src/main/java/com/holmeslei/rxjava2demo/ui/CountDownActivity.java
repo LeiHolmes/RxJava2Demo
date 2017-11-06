@@ -18,7 +18,7 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
 /**
- * 利用RxJava2实现倒计时获取验证码的功能
+ * 利用RxJava2实现倒计时，获取验证码的功能
  */
 public class CountDownActivity extends AppCompatActivity {
     @BindView(R.id.btn_get_code)
