@@ -6,6 +6,9 @@ import android.widget.Button;
 
 import com.holmeslei.rxjava2demo.R;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -36,7 +39,6 @@ public class CountDownActivity extends AppCompatActivity {
     public void onViewClicked() {
         //点击后置为不可点击状态
         btnGetCode.setEnabled(false);
-        btnGetCode.setClickable(false);
         //从0开始发射11个数字为：0-10依次输出，延时0s执行，每1s发射一次。
         mdDisposable = Flowable.intervalRange(0, 11, 0, 1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -51,11 +53,41 @@ public class CountDownActivity extends AppCompatActivity {
                     public void run() throws Exception {
                         //倒计时完毕置为可点击状态
                         btnGetCode.setEnabled(true);
-                        btnGetCode.setClickable(true);
                         btnGetCode.setText("获取验证码");
                     }
                 })
                 .subscribe();
+        
+        //背压策略写法
+//        Flowable.intervalRange(0, 11, 0, 1, TimeUnit.SECONDS)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<Long>() {
+//                    Subscription subscription;
+//
+//                    @Override
+//                    public void onSubscribe(Subscription s) {
+//                        subscription = s;
+//                        subscription.request(1);
+//                    }
+//
+//                    @Override
+//                    public void onNext(Long aLong) {
+//                        btnGetCode.setText("重新获取(" + (10 - aLong) + ")");
+//                        subscription.request(1);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable t) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        //倒计时完毕置为可点击状态
+//                        btnGetCode.setEnabled(true);
+//                        btnGetCode.setText("获取验证码");
+//                    }
+//                });
     }
 
     @Override
