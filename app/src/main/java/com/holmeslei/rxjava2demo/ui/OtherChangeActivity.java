@@ -13,7 +13,11 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
-
+/**
+ * Description:   其他语法更新
+ * author         xulei
+ * Date           2017/8/3 15:08
+ */
 public class OtherChangeActivity extends AppCompatActivity {
 
     @Override
