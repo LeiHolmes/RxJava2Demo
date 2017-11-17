@@ -8,27 +8,40 @@ import com.holmeslei.rxjava2demo.R;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 /**
- * Description:   其他语法更新
+ * Description:   语法更新
  * author         xulei
  * Date           2017/8/3 15:08
  */
-public class OtherChangeActivity extends AppCompatActivity {
+public class GrammarChangeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_other_change);
+        setContentView(R.layout.activity_grammar_change);
+        nullChange();
         actionChange();
         functionChange();
         doOnCancel();
         schedulerChange();
         subscriptionChange();
+    }
+
+    /**
+     * RxJava2不再支持传入null
+     * 直接传入null会抛出NullPointerException
+     * 操作符返回null会走onError()回调
+     */
+    private void nullChange() {
+//        Observable.just(null);
+        Observable.just(1)
+                .map(integer -> null)
+                .subscribe(o -> Log.e("test_rxjava", "onNext:" + o.toString()),
+                        throwable -> Log.e("test_rxjava", "onError:" + throwable.getMessage()));
     }
 
 

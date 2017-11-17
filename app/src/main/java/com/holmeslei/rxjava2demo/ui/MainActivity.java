@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ObserveModeActivity.class));
                 break;
             case R.id.bt_other_change:
-                startActivity(new Intent(this, OtherChangeActivity.class));
+                startActivity(new Intent(this, GrammarChangeActivity.class));
                 break;
             case R.id.bt_count_down:
                 startActivity(new Intent(this, CountDownActivity.class));
